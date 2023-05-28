@@ -1,0 +1,296 @@
+% Family songbook
+% TODO:
+%  Improve line spacing
+%  Change chord font
+%  Increase font size
+%  Make titles better
+%  Try html export?
+%  Add youtube links
+%  Split songs apart into files? Might make it harder to do formatting specifics, but with needspace that's less of an issue
+%  End or Outro?
+%  
+
+\documentclass[twocolumn,a4paper,twoside,11pt]{article}
+
+
+\usepackage[
+  inner=40pt,
+  textwidth=480pt,
+  top=1cm,
+  bottom=2cm
+]{geometry}
+
+\usepackage{leadsheets}
+\usepackage{array}
+\usepackage{needspace} % allows conditional page breaks if not enough space left in page/column
+\usepackage{xcolor}
+
+\definesongproperty{suggestedby}
+
+\definesongtitletemplate{custom}{
+  \begin{tabular}{@{}l@{}}
+    \ifdim\pagetotal>5cm
+        \hline \\[1pt]
+    \fi
+    \bfseries\huge\songproperty{title} \\[-1pt]
+    \ifsongproperty{composer} {\normalfont\small\sffamily{By \songproperty{composer}} \\}{}
+    
+    \ifsongproperty{suggestedby} { \normalfont\small\sffamily{Suggested by \songproperty{suggestedby}} \\} { \\[-15pt]}
+    \\[-10pt]
+  \end{tabular}
+}
+
+\newcommand{\formatChorusLabel}[1]{\colorbox{gray}{\textbf{\colorbox{white}{#1}} \hspace{-10pt}}}
+
+\setleadsheets{
+    title-template = custom,
+    verse/numbered = true,
+    % verse/label-format = \bfseries,
+    chorus/label-format = \small\formatChorusLabel,
+    % chorus/template = \songproperty{label},
+    % bridge/label-format = \bfseries,
+    % intro/label-format = \bfseries,
+    % itemize/label-format = \bfseries,
+    verses-label-format = \bfseries\small,
+    align-chords = l,
+    % text-format = {\fontsize{14pt}{15pt}},  % second dimension should be larger than the first!  
+    chords/format = {\fontsize{12pt}{12pt}\color{blue}\bfseries\sffamily},
+}
+
+% \newcommand{\threesidebox}[1]{\fboxsep=0pt\fbox{\strut#1}\kern-\fboxrule}
+
+% Custom command for chorus indication
+\newcommand{\chorusref}[1]{\fbox{\textit{$\uparrow$ {#1}}}}
+
+
+
+\begin{document}
+
+\begin{song}{title={Banana Bread}, composer={Caspar Babypants}, suggestedby={Jim and Amanda Hays}}
+
+\begin{chorus}
+^{D}Banana bread, banana bread. \\
+^{G}We can be ^{D}banana bread. \\
+^{G}We're not pretty but we're not ^{A}dead... \\
+^{Cadd2}{We can be} banana ^{D}bread!
+\end{chorus}
+
+\begin{verse}
+^{G}You brought us home from the grocery. \\
+We looked so snappy, \\
+^{D}Put us on the counter top over there. \\
+We were so happy. \\
+Then ^{E7}you forgot about us, lunch after lunch. \\
+^{A}Now we are a ^{A6}fruit fly covered, \\
+^{A7}brown, and bummed out bunch, but
+\end{verse}
+
+\chorusref{Chorus}
+
+\begin{verse}
+^{G}Once upon a time \\
+we were so yellow, \\
+^{D}cheery, bright, and smiling, \\
+a bunch of happy fellows. \\
+Then ^{E7}we got forgotten. \\
+Now it's almost too late. \\
+^{A}but you can still make us into something \\
+tasty to put on your plate.
+\end{verse}
+
+\chorusref{Chorus}
+
+\needspace{2\baselineskip} % Don't let the bridge get broken across
+
+\begin{bridge}
+|: ^{G}(Ba - na - na) ^{E7}(ba - na - na) \\
+^{Bm}(ba - na - na) ^{C}(Ba - na - na) :| \\
+^{A}Ba - na - na - na -na -na - na na ^{Ab}
+\end{bridge}
+
+\begin{verse}
+^{G}Me and the boys have been \\
+together for so long. \\
+^{D}We grew up on a banana tree. \\
+and learned to sing this song. \\
+^{E7}All the young bananas learned it. \\
+in case they get forgotten \\
+^{A}So people don't throw them out \\
+just because they look a little bit rotten.
+\end{verse}
+
+\chorusref{Chorus}
+
+\begin{outro}
+|: ^{Cadd2}{We can be} banana ^{D}bread! :| (3x)
+\end{outro}
+
+\end{song}
+
+\begin{song}{title={You fill up my senses}, composer={John Denver}, key=D}
+\begin{verse}
+^{D}You ^{Dsus4}{fill up my} ^*{G}sen ^{A}ses ^{Bm} \\
+like a ^{G}night in a ^{D}forest, ^{D/C#} ^{Bm} \\
+like the ^{A}mountains in ^*{G}spring ^{F#m}time, ^{Em} \\
+like a ^{G}walk in the ^{A7}rain, \\
+like a storm in the ^*{G}de ^{A}sert ^{Bm} \\
+like a ^{G}sleepy blue ^{D}ocean. ^{D/C#} ^{Bm} \\
+You ^{A}fill up my ^*{G}sen ^{F#m}ses ^{Em} \\
+come ^{A7}fill me a^{D}gain. ^{Dsus4}
+\end{verse}
+\begin{verse}
+^{D} ^{Dsus4}{Come let me} ^{G}love ^{A}you, ^{Bm} \\
+let me ^{G}give my life ^{D}to you. ^{D/C#} ^{Bm} \\
+Let me ^{A}drown in your ^*{G}laugh ^{F#m}ter, ^{Em} \\
+let me ^{G}die in your ^{A7}arms. \\
+Let me lay down be^{G}side ^{A}you. ^{Bm} \\
+Let me ^{G}always be ^{D}with you. ^{D/C#} ^{Bm} \\
+^{A}Come let me ^{G}love ^{F#m}you, ^{Em} \\
+come ^{A7}love me a^{D}gain. ^{Dsus4} ^{D}
+\end{verse}
+
+\chorusref{Verse 1}
+\end{song}
+
+
+\needspace{8\baselineskip} % Don't start new song toward end of column
+\begin{song}{title={Country roads}, composer={John Denver}, key=G}
+\begin{verse}
+^{G}{\: Almost} Heaven^{Em}{; West} Virginia^{D}, \\
+Blue Ridge Mountains, ^{C}Shenandoah ^{G}River. \\
+^{G}{\: Life} is old there, ^{Em}older than the trees, \\
+^{D}younger than the the mountains, \\
+^{C}blowin' like a ^{G}breeze.
+\end{verse}
+\begin{chorus}
+Country ^{G}roads, take me ^{D}home, \\
+to the ^{Em}place, I be^{C}long, \\
+West Virg^{G}inia, mountain ^{D}mama, \\
+take me ^{C}home, country ^{G}roads.
+\end{chorus}
+
+\begin{verse}
+^{G}{\: All my} memories^{Em}{\: gather} round her: \\
+^{D}{\: miner's} lady, ^{C}stranger  to blue wa^{G}ter, \\
+^{G}{\: dark} and dusty, ^{Em}painted on the sky; \\
+^{D}misty taste of moonshine; \\
+^{C}teardrop in my ^{G}eye.
+\end{verse}
+
+\chorusref{Chorus}
+
+\begin{bridge}
+^{Em}{I hear} her ^{D}voice in the ^{G}morning hour she calls me. \\
+The ^{C}radio re^{G}minds me of my ^{D}home far away. \\
+And ^{Em}driving down the ^{F}road I get a ^{C}feeling \\
+that I ^{G}should have been home ^{D}yesterday, yester^{D7}day.
+\end{bridge}
+
+\chorusref{Chorus}
+
+\begin{outro}
+|: Take me ho^{D}me, down country r^{G}oads. :|
+\end{outro}
+
+\end{song}
+
+\needspace{8\baselineskip} % Don't start new song toward end of column
+\begin{song}{title={The parting glass}, composer={The Wailin' Jennys}, key=G}
+\begin{verse}
+Oh ^{Em}{all the} ^{Cadd2}money that ^{G}e'er I ^{D}spent \\
+I ^{G}spent it in good company. ^{D} \\
+And ^{Em}{all the} ^{Cadd2}harm that ^{G}e'er I've ^{D}done, \\
+^{G/D}{alas, it} ^{G}was to ^{Em}none but ^{C}me. \\
+\\
+And ^{G}all I've done for want of wit, \\
+to ^{Am}memory ^{D}now, I ^{G}can't re^{D}call. \\
+So ^{Em}fill to ^{C}me the ^{G}parting ^{D}glass. \\
+^{G/D}Goodnight and ^{G}joy be ^{Em}with you ^{C}all. \\
+\end{verse}
+
+\begin{verse}
+Oh ^{Em}{all the} ^{Cadd2}comrades that ^{G}e'er I've ^{D}had \\
+are ^{G}sorry for my going away. ^{D} \\
+And ^{Em}{all the} ^{Cadd2}sweethearts that ^{G}e'er I've ^{D}had, \\
+^{G/D}{would wish} me ^{G}one more ^{Em}day to ^{C}stay. \\
+\\
+But ^{G}since it falls unto my lot, \\
+that ^{Am}{I should} ^{D}rise and ^{G}you should ^{D}not, \\
+I'll ^{Em}gently ^{C}rise and I'll ^{G}softly ^{D}call \\
+^{G/D}Goodnight and ^{G}joy be ^{Em}with you ^{C}all. \\
+\end{verse}
+\begin{outro}[name={End}, named=true]
+^{G/D}Goodnight and ^{G}joy be with you ^{Em}all. \\
+\end{outro}
+
+\end{song}
+
+\needspace{10\baselineskip} % Don't start new song toward end of column
+\begin{song}{title={His cheeseburger}, composer={Veggietails}, key=A}
+
+\begin{verse}
+He ^{A}said to her, ``I'd like a cheese^{E}burger \\
+and I ^{G}might like a milkshake as ^{D}well." \\
+She ^{A}said to him, ``I can't get you ^{E}either." \\
+And he ^{G}said, ``Isn't this Burger ^{D}Bell?" \\
+\\
+She ^{C#}said, ``Yes, it is, but we're ^{F#m}closed now, \\
+but we ^{D}open tomorrow at ^{E}ten." \\
+He ^{F#m}said, "I am extremely ^{E}hungry, \\
+But I ^{D}guess I can wait until ^{E}then!" ^{E7}
+\end{verse}
+
+\begin{chorus}
+'Cause ^{E7}you're his ^*{A}{cheeseburg} ^{E7}{er}, \\
+his yummy ^*{A}{cheeseburg} ^{E7}{er}. \\
+He'll wait for ^{Bm7}you, ya \\
+he'll wait for ^{E7}you. \\
+Oh, you are his ^*{A}{cheeseburg} ^{E7}{er}, \\
+his tasty ^*{A}{cheeseburg} ^{E7}{er}. \\
+He'll wait for ^{Bm7}you, \\
+oh he will wait for ^{E7}you. \\
+\end{chorus}
+
+\begin{verse}
+He ^{A}stayed at the drive-thru till ^{E}sunrise, \\
+(He ^{G}may have dozed off once or ^{D}twice) \\
+when he ^{A}spotted a billboard for ^{E}Denny's: \\
+^{G}"Bacon and eggs for half ^{D}price." \\
+\\
+How ^{C#}could he resist such an ^{F#m}offer? \\
+He ^{D}really needed something to ^{E}munch. \\
+^{F#m}Cheeseburger, please do not get ^{E}angry! \\
+He'll ^{D}eat and be back here for ^{E}lunch. ^{E7}
+\end{verse}
+
+\begin{chorus}
+'Cause ^{E7}you're his ^*{A}{cheeseburg} ^{E7}{er}, \\
+his precious ^*{A}{cheeseburg} ^{E7}{er}. \\
+Be back for ^{Bm7}you, \\
+he'll be back for ^{E7}you. \\
+Won't be so long ^*{A}{cheeseburg} ^{E7}{er}, \\
+oh lovely ^*{A}{cheeseburg} ^{E7}{er}. \\
+Be back for ^{Bm7}you. \\
+Oh, ^{E}he'll be back for ^{A}you. ^{C#sus} ^{C#7}\\
+\end{chorus}
+
+\begin{bridge}
+'Cause he ^{F#m}loves you cheeseburger with all his heart,
+and there aint nothin' gonna tear you two apart. \\
+And if the ^{E}world suddenly ran out of cheese \\
+he would ^{C}get down on his hands and knees \\
+to see if ^{Ab}someone accidentally \\
+dropped some ^{C}cheese in the dirt, \\
+and he would ^{D}wash it off for you, \\
+^{D}wipe it off for you, \\
+^{D}clean that dirty cheese off just for you!
+\end{bridge}
+
+\begin{outro}
+^{NC}You are his cheeseburger. ^{G}
+\end{outro}
+
+
+\end{song}
+
+\end{document}
