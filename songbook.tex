@@ -8,6 +8,7 @@
 %  Add youtube links
 %  Split songs apart into files? Might make it harder to do formatting specifics, but with needspace that's less of an issue
 %  End or Outro?
+%  Add Capo notes
 %  
 
 \documentclass[twocolumn,a4paper,twoside,11pt]{article}
@@ -34,6 +35,8 @@
     \ifsongproperty{composer} {\normalfont\small\sffamily{By \songproperty{composer}} \\}{}
     
     \ifsongproperty{suggestedby} { \normalfont\small\sffamily{Suggested by \songproperty{suggestedby}} \\} { \\[-15pt]}
+
+    \ifsongproperty{capo} { \normalfont\small\sffamily{Capo \songproperty{capo}} \\} { \\[-15pt]}
     \\[-10pt]
   \end{tabular}
 }
@@ -92,7 +95,22 @@
 \needspace{10\baselineskip} % Don't start new song toward end of column
 \input{singles/youll-be-back}
 
+\needspace{9\baselineskip} % Don't start new song toward end of column
+\input{singles/edelweiss}
+
+\needspace{10\baselineskip} % Don't start new song toward end of column
+\input{singles/wisemen-say}
+
+\needspace{10\baselineskip} % Don't start new song toward end of column
+\input{singles/one-tin-soldier}
+
+\needspace{10\baselineskip} % Don't start new song toward end of column
+\input{singles/you-are-my-sunshine}
+
 \needspace{10\baselineskip} % Don't start new song toward end of column
 \input{singles/can-you-feel}
+
+\needspace{10\baselineskip} % Don't start new song toward end of column
+\input{singles/blackbird}
 
 \end{document}
